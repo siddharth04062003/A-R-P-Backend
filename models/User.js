@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const { email } = require('zod/v4');
 
 const userSchema = new mongoose.Schema({
     uid : {
         type:String,
         required: true
     },
-    userMail :{
+    email :{
         type : String,
-        required: true
+        required: true,
+        unique:true
     },
     name :{
         type: String,
@@ -17,7 +17,11 @@ const userSchema = new mongoose.Schema({
     semester :{
         type: String,
         required : true
-    }
+    },
+    password: {
+        type: String,
+        required: true,
+  }
 });
 
 

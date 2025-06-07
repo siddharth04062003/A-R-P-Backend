@@ -11,7 +11,7 @@ const resourceSchema = new mongoose.Schema({
     required: true
   },
   semester: {
-    type: Number, // Correct here
+    type: Number,
     required: true
   },
   subject: {
@@ -24,7 +24,7 @@ const resourceSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["Ytb", "Notes"],
+    enum: ["Ytb", "Notes"], // You can expand this if needed
     required: true
   },
   uploadedAt: {
@@ -33,6 +33,4 @@ const resourceSchema = new mongoose.Schema({
   }
 });
 
-const Resource = mongoose.model("Resource", resourceSchema);
-
-module.exports = Resource;
+module.exports = mongoose.model("Resource", resourceSchema);

@@ -11,14 +11,13 @@ const uploadResource = async (req, res) => {
       subject,
       type,
       url,
-      uploadedAt: new Date(),
     });
 
     await newResource.save();
-    res.status(201).json({ msg: "Resource uploaded successfully", resource: newResource });
+    return res.status(201).json({ msg: "Resource uploaded successfully", resource: newResource });
   } catch (error) {
     console.error("Upload Error:", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Failed to upload resource",
       message: error.message
     });
@@ -30,18 +29,16 @@ const getResourcesBySemester = async (req, res) => {
     const { sem } = req.params;
     const { subject, type } = req.query;
 
-    let filter = { semester: sem };
-
+    let filter = { semester: parseInt(sem) };
     if (subject) filter.subject = subject;
     if (type) filter.type = type;
 
     const resources = await Resource.find(filter);
-    res.status(200).json(resources);
+    return res.status(200).json(resources);
   } catch (error) {
     console.error("Fetch Error:", error.message);
-    res.status(500).json({ error: "Failed to fetch resources", message: error.message });
+    return res.status(500).json({ error: "Failed to fetch resources", message: error.message });
   }
 };
-
 
 module.exports = { uploadResource, getResourcesBySemester };
