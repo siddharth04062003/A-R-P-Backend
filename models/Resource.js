@@ -24,7 +24,7 @@ const resourceSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["Ytb", "Notes"], // You can expand this if needed
+    enum: ["Ytb", "Notes"], 
     required: true
   },
   uploadedAt: {

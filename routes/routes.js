@@ -1,8 +1,10 @@
 const express = require("express");
-
-import userRouter from './user';
+const userRouter = require("./userRoutes");
+const adminRouter = require("./adminRoutes");
 
 const rootRouter = express.Router();
 
-rootRouter.use('/user', userRouter);
-rootRouter.use('/admin', adminRouter);
+rootRouter.use("/user", userRouter);
+rootRouter.use("/admin", adminRouter);
+
+module.exports = rootRouter;
