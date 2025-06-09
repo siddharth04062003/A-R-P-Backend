@@ -1,10 +1,12 @@
 const User = require("../models/User");
-const SignUpZod = require("../ZodValidators/updateZod");
+const SignUpZod = require("../ZodValidators/SignUpZod");
 
 const SignUpCheck = async (req, res, next) => {
   console.log("Signup payload received:", req.body); // Debug backend input
+  console.log(req.body);
 
   const parsedResult = SignUpZod.safeParse(req.body);
+  console.log(parsedResult.data)
 
   if (!parsedResult.success) {
     console.log("Zod validation errors:", parsedResult.error.format()); // Debug errors

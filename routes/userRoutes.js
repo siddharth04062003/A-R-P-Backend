@@ -5,7 +5,7 @@ const User = require("../models/User");
 const LoginCheck = require("../middleware/LoginCheck");
 const { AuthCheck } = require("../middleware/AuthCheck");
 const SignUpCheck = require("../middleware/SignUpCheck");
-const updateZod = require("../ZodValidators/updateZod");
+const updateZod = require("../ZodValidators/SignUpZod");
 
 const userRouter = express.Router();
 
